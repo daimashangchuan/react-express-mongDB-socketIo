@@ -8,7 +8,7 @@ import { NavBar, List, InputItem, Icon, Grid } from 'antd-mobile';
 import QueueAnim from 'rc-queue-anim';
 
 import { sendMsg, readMsg } from '../../redux/actions'
-import { emojis } from "../../utils"
+import { emojis } from "../../utils/emojis";
 import './index.less'
 
 const Item = List.Item;
@@ -22,7 +22,7 @@ class Chat extends Component {
 
     componentWillMount() {
         // 初始化表情的数据
-        this.emojis = emojis.map(emoji => ({ text: emoji }));
+        this.emojis = emojis.map(emoji => ({ text: emoji, icon: '' }));
     }
 
     componentDidMount() {
@@ -96,13 +96,13 @@ class Chat extends Component {
                                 // 接受对方的信息
                                 if(targetId === msg.from) {   
                                     return (
-                                        <Item key={ msg._id } thumb={ targetHeader }>
+                                        <Item wrap multipleLine={true} key={ msg._id } thumb={ targetHeader }>
                                             { msg.content }
                                         </Item>
                                     )
                                 } else {
                                     return (
-                                        <Item key={ msg._id } className='chat-me' extra='&nbsp;: 我'>
+                                        <Item wrap multipleLine={true} key={ msg._id } className='chat-me' extra='&nbsp;: 我'>
                                             { msg.content }
                                         </Item>
                                     )
@@ -117,7 +117,7 @@ class Chat extends Component {
                         onChange={ (val) => this.setState({ content: val }) } 
                         extra={ 
                             <div>
-                                <span onClick={ this.toogleShow } style={{ lineHeight: 1.2 }}>😊</span>
+                                <span onClick={ this.toogleShow } style={{ lineHeight: 1.2 }}>🙂</span>
                                 <span onClick={ this.handleSend }> 发送</span> 
                             </div>
                         }>
