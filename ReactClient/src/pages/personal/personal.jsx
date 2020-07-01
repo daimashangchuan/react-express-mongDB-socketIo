@@ -4,12 +4,12 @@
 
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getUserInfo, setResetUser, setResetMsg } from "../../redux/actions"
+import { getUserInfo, setResetUser, setResetMsg } from "../../redux/actions";
 
 import { Result, List, WhiteSpace, Button, Modal } from "antd-mobile";
 import { Brief } from 'antd-mobile/lib/list/ListItem';
 
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 
 const Item = List.Item;
 class Personal extends Component {
